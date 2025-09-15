@@ -81,7 +81,8 @@ pipeline{
               script{
 
                 dependencyCheck additionalArguments: ''' --scan target/ ''', debug: true, nvdCredentialsId: 'owasp_token', odcInstallation: 'dpc_tool'
-                dependencyCheckPublisher pattern: 'dcp_report.xml'
+
+                dependencyCheckPublisher pattern: '**/dependency-check_report.xml'
 
               }
                 
