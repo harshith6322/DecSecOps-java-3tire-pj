@@ -79,8 +79,10 @@ pipeline{
         stage("OWASP Check"){
             steps{
               script{
-                dependencyCheck additionalArguments: ''' --scan target/ --format HTML''', debug: true,       odcInstallation: 'dpc_tool' \
+
+                dependencyCheck additionalArguments: ''' --scan target/ ''', debug: true, odcInstallation: 'dpc_tool'
                 dependencyCheckPublisher pattern: 'dcp_report.xml'
+                
               }
                 
                 
