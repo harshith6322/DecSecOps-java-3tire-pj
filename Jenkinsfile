@@ -55,8 +55,8 @@ pipeline{
                         sh """
                            ${scannerHome}/bin/sonar-scanner  \
                            -Dsonar.projectKey=java-3-tire     \
-                           -Dsonar.exclusions=**/build/**,**/.git/**,**/.idea/**,**/.settings/**,**/*.class,**/*.jar,**/*.war,**/*.ear,**/generated-sources/**,**/test/**,**/out/**   \
-
+                           -Dsonar.exclusions=**/target/**,**/build/**,**/.git/**,**/.idea/**,**/.settings/**,**/out/**  \
+                           
                         """
 
                     }
