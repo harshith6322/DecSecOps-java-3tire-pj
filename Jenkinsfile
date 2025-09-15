@@ -115,9 +115,13 @@ pipeline{
         }
 
         stage("Trivy Scan"){
+            steps{
 
-            sh "trivy image ${IMAGE_NAME} > ${IMAGE_NAME}_scan_report.txt"
-            sh "trivy image ${IMAGE_NAME2} > ${IMAGE_NAME2}_scan_report.txt"
+              sh "trivy image ${IMAGE_NAME} > ${IMAGE_NAME}_scan_report.txt"
+              sh "trivy image ${IMAGE_NAME2} > ${IMAGE_NAME2}_scan_report.txt"
+            }
+
+           
             
         }
 
