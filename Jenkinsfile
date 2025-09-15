@@ -57,6 +57,7 @@ pipeline{
                            -Dsonar.sources=src \
                            -Dsonar.java.binaries=target/classes \
                            -Dsonar.projectKey=java-3-tire     \
+                            -Dsonar.exclusions=**/target/**,**/build/**,**/.git/**,**/.idea/**,**/.settings/**,**/out/** \
                         """
 
                     }
@@ -68,9 +69,9 @@ pipeline{
 
         stage("Quality Gate"){
             steps{  
-                scritp{
-                    waitForQualityGate abortPipeline: true, credentialsId: 'sonar_token'
-                }
+               
+               waitForQualityGate abortPipeline: true, credentialsId: 'sonar_token'
+               
             }
         }
 
