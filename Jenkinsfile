@@ -128,7 +128,7 @@ pipeline{
         stage('Dcoker Compose') {
             steps {
               sh "docker-compose up -d"
-              sh "sleep 3m"
+              sh "sleep 1m"
               sh "docker-compose down"
                    
             }
@@ -147,7 +147,7 @@ pipeline{
                 to: "${RECIPIENTS}",
                 attachLog: true,
                 compressLog: true,
-                attachmentsPattern: 'npm-audit-report.json,trivy_scan_ouput.txt' 
+                attachmentsPattern: "${IMAGE_NAME}_scan_report.txt,${IMAGE_NAME2}_scan_report.txt,dependency-check-report/dependency-check-report.xml"
                
             )
         }
@@ -159,7 +159,7 @@ pipeline{
                 to: "${RECIPIENTS}",
                 attachLog: true,
                 compressLog: true,
-                attachmentsPattern: 'npm-audit-report.json,trivy_scan_ouput.txt' 
+                attachmentsPattern: "${IMAGE_NAME}_scan_report.txt,${IMAGE_NAME2}_scan_report.txt,dependency-check-report/dependency-check-report.xml"
                 
                 
             )
@@ -173,7 +173,7 @@ pipeline{
                 to: "${RECIPIENTS}",
                 attachLog: true,
                 compressLog: true,
-                attachmentsPattern: "${IMAGE_NAME}_scan_report.txt,${IMAGE_NAME2}_scan_report.txt,"
+                attachmentsPattern: "${IMAGE_NAME}_scan_report.txt,${IMAGE_NAME2}_scan_report.txt,dependency-check-report/dependency-check-report.xml"
                 
                 
             )
