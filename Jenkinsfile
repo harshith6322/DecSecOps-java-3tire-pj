@@ -86,8 +86,8 @@ pipeline{
             steps{
               script{
 
-                dependencyCheck additionalArguments: ''' --scan target/ ''', debug: true, nvdCredentialsId: 'owasp_token', odcInstallation: 'dpc_tool'
-                dependencyCheckPublisher pattern: 'dependency-check_report.xml'
+                dependencyCheck additionalArguments: ''' --scan target/  --out dependency-check-report ''', debug: true, nvdCredentialsId: 'owasp_token', odcInstallation: 'dpc_tool'
+                dependencyCheckPublisher pattern: 'dependency-check-report/dependency-check-report.xml'
 
               }
                 
@@ -107,8 +107,8 @@ pipeline{
         stage("Build Images"){
             steps{
 
-                sh "docker build -t ${IMAGE_NAME} Docker-app}"
-                sh "docker build -t ${IMAGE_NAME2} Docker-db}"
+                sh "docker build -t ${IMAGE_NAME} Docker-app"
+                sh "docker build -t ${IMAGE_NAME2} Docker-db"
                
             }
 
